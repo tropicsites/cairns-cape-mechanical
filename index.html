@@ -1,820 +1,1528 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-   <title>TEST - Cairns & Cape Mechanical</title>
-
-    <meta name="description" content="Cairns & Cape Mechanical — reliable mechanical services across Cairns and Far North Queensland.">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #111714;
-            color: #f5f1e8;
-            line-height: 1.6;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        /* =========================
-           HEADER
-        ========================= */
-
-        header {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 10;
-            padding: 24px 5%;
-        }
-
-        .nav {
-            max-width: 1200px;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            font-size: 1.2rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-
-        .logo span {
-            color: #d8a84e;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            align-items: center;
-            list-style: none;
-            font-size: 0.95rem;
-        }
-
-        .nav-links a {
-            opacity: 0.85;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            opacity: 1;
-            color: #d8a84e;
-        }
-
-        .nav-button {
-            background: #d8a84e;
-            color: #111714;
-            padding: 12px 20px;
-            border-radius: 4px;
-            font-weight: 700;
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            min-height: 760px;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            background:
-                radial-gradient(circle at 80% 30%, rgba(216,168,78,0.16), transparent 30%),
-                radial-gradient(circle at 20% 80%, rgba(37,112,94,0.18), transparent 35%),
-                #111714;
-        }
-
-        .hero::after {
-            content: "";
-            position: absolute;
-            right: -150px;
-            bottom: -250px;
-            width: 650px;
-            height: 650px;
-            border-radius: 50%;
-            border: 1px solid rgba(216,168,78,0.15);
-        }
-
-        .hero-content {
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
-            position: relative;
-            z-index: 2;
-            padding-top: 80px;
-        }
-
-        .eyebrow {
-            color: #d8a84e;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 {
-            max-width: 850px;
-            font-size: clamp(3.5rem, 8vw, 7rem);
-            line-height: 0.95;
-            letter-spacing: -5px;
-            margin-bottom: 30px;
-        }
-
-        .hero h1 span {
-            color: #d8a84e;
-        }
-
-        .hero-text {
-            max-width: 600px;
-            color: #c2c6c1;
-            font-size: 1.15rem;
-            margin-bottom: 35px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 16px 26px;
-            border-radius: 4px;
-            font-weight: 700;
-            transition: 0.3s;
-        }
-
-        .button-primary {
-            background: #d8a84e;
-            color: #111714;
-        }
-
-        .button-primary:hover {
-            transform: translateY(-3px);
-            background: #edc16e;
-        }
-
-        .button-secondary {
-            border: 1px solid rgba(255,255,255,0.2);
-            color: white;
-        }
-
-        .button-secondary:hover {
-            border-color: #d8a84e;
-            color: #d8a84e;
-        }
-
-        /* =========================
-           TRUST BAR
-        ========================= */
-
-        .trust {
-            background: #1a211d;
-            border-top: 1px solid rgba(255,255,255,0.06);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-        }
-
-        .trust-inner {
-            max-width: 1200px;
-            margin: auto;
-            padding: 24px 5%;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .trust-item {
-            text-align: center;
-            color: #d1d5d0;
-            font-size: 0.9rem;
-        }
-
-        .trust-item strong {
-            display: block;
-            color: white;
-            margin-bottom: 3px;
-        }
-
-        /* =========================
-           GENERAL SECTIONS
-        ========================= */
-
-        section {
-            padding: 110px 5%;
-        }
-
-        .section-inner {
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .section-label {
-            color: #d8a84e;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .section-title {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            line-height: 1;
-            letter-spacing: -2px;
-            margin-bottom: 20px;
-        }
-
-        .section-intro {
-            max-width: 650px;
-            color: #aeb4ae;
-            font-size: 1.05rem;
-        }
-
-        /* =========================
-           SERVICES
-        ========================= */
-
-        .services {
-            background: #f1eee6;
-            color: #17201b;
-        }
-
-        .services .section-intro {
-            color: #59615a;
-        }
-
-        .service-grid {
-            margin-top: 60px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-        }
-
-        .service-card {
-            padding: 35px;
-            min-height: 240px;
-            background: white;
-            border: 1px solid #dedbd3;
-            transition: 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-        }
-
-        .service-number {
-            color: #d8a84e;
-            font-size: 0.8rem;
-            font-weight: 800;
-            margin-bottom: 45px;
-        }
-
-        .service-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-        }
-
-        .service-card p {
-            color: #666c67;
-            font-size: 0.95rem;
-        }
-
-        /* =========================
-           ABOUT
-        ========================= */
-
-        .about {
-            background: #111714;
-        }
-
-        .about-grid {
-            margin-top: 60px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 70px;
-            align-items: center;
-        }
-
-        .about-visual {
-            min-height: 500px;
-            background:
-                linear-gradient(135deg, rgba(37,112,94,0.45), rgba(17,23,20,0.9)),
-                #26332c;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-visual::before {
-            content: "CAIRNS";
-            position: absolute;
-            bottom: -35px;
-            left: -10px;
-            font-size: 7rem;
-            font-weight: 900;
-            color: rgba(255,255,255,0.04);
-        }
-
-        .about-content h2 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            line-height: 1;
-            margin-bottom: 25px;
-        }
-
-        .about-content p {
-            color: #aeb4ae;
-            margin-bottom: 18px;
-        }
-
-        .about-list {
-            list-style: none;
-            margin-top: 30px;
-        }
-
-        .about-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            color: #d9ddd8;
-        }
-
-        .about-list li::before {
-            content: "✓";
-            color: #d8a84e;
-            margin-right: 12px;
-            font-weight: bold;
-        }
-
-        /* =========================
-           CTA
-        ========================= */
-
-        .cta {
-            background:
-                linear-gradient(135deg, #1c4035, #111714);
-            text-align: center;
-        }
-
-        .cta h2 {
-            max-width: 800px;
-            margin: auto auto 25px;
-            font-size: clamp(2.8rem, 6vw, 5.5rem);
-            line-height: 0.98;
-            letter-spacing: -3px;
-        }
-
-        .cta p {
-            max-width: 600px;
-            margin: 0 auto 35px;
-            color: #bdc5bf;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            background: #0b0f0d;
-            padding: 50px 5%;
-        }
-
-        .footer-inner {
-            max-width: 1200px;
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            gap: 30px;
-        }
-
-        .footer-logo {
-            font-size: 1.2rem;
-            font-weight: 800;
-        }
-
-        .footer-logo span {
-            color: #d8a84e;
-        }
-
-        .footer-text {
-            color: #777e78;
-            font-size: 0.85rem;
-            margin-top: 10px;
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 800px) {
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                min-height: 700px;
-            }
-
-            .hero h1 {
-                font-size: 3.5rem;
-                letter-spacing: -3px;
-            }
-
-            .trust-inner {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .service-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .about-visual {
-                min-height: 350px;
-            }
-
-            .footer-inner {
-                flex-direction: column;
-            }
-        }
-
-        @media (max-width: 500px) {
-
-            header {
-                padding: 20px;
-            }
-
-            .nav-button {
-                padding: 10px 14px;
-                font-size: 0.8rem;
-            }
-
-            .hero-content {
-                width: 90%;
-            }
-
-            .hero h1 {
-                font-size: 3rem;
-            }
-
-            section {
-                padding: 80px 6%;
-            }
-
-            .trust-inner {
-                grid-template-columns: 1fr 1fr;
-                gap: 15px;
-            }
-
-            .trust-item {
-                font-size: 0.75rem;
-            }
-        }
-    </style>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cairns & Cape Mechanical | Marine, PWC & Motorcycle Mechanics</title>
+
+<meta
+name="description"
+content="Cairns & Cape Mechanical provides mobile mechanical servicing and repairs across Cairns, Far North Queensland and Cape York."
+>
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #101512;
+    color: #f4f1e8;
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =========================================================
+   COLOURS
+========================================================= */
+
+:root {
+    --dark: #101512;
+    --dark-2: #17201b;
+    --green: #a8d63b;
+    --green-dark: #6f9420;
+    --cream: #f4f1e8;
+    --muted: #a8aea7;
+    --line: rgba(255,255,255,0.1);
+    --white: #ffffff;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+
+    padding: 24px 5%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.logo {
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    font-size: 1.05rem;
+}
+
+.logo span {
+    color: var(--green);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+
+    list-style: none;
+
+    font-size: 0.9rem;
+}
+
+.nav-links a {
+    color: rgba(255,255,255,0.8);
+    transition: 0.25s;
+}
+
+.nav-links a:hover {
+    color: var(--green);
+}
+
+.nav-call {
+    background: var(--green);
+    color: #101512 !important;
+
+    padding: 11px 18px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 820px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(8,13,10,0.97) 0%,
+            rgba(8,13,10,0.88) 42%,
+            rgba(8,13,10,0.38) 75%,
+            rgba(8,13,10,0.65) 100%
+        ),
+        url("https://static.wixstatic.com/media/f17b6c_d40be89ba8c5493b8d1f9b1de4b6b108~mv2.jpeg/v1/fill/w_1200,h_900,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/f17b6c_d40be89ba8c5493b8d1f9b1de4b6b108~mv2.jpeg");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    width: 90%;
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding-top: 80px;
+}
+
+.hero-eyebrow {
+    color: var(--green);
+
+    font-size: 0.8rem;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    max-width: 850px;
+
+    font-size: clamp(3.5rem, 7vw, 7rem);
+
+    line-height: 0.9;
+
+    letter-spacing: -5px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 30px;
+}
+
+.hero h1 span {
+    color: var(--green);
+}
+
+.hero-description {
+    max-width: 600px;
+
+    color: #d1d6d0;
+
+    font-size: 1.15rem;
+
+    margin-bottom: 35px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 15px 24px;
+
+    font-size: 0.9rem;
+    font-weight: 800;
+
+    transition: 0.25s;
+}
+
+.button-primary {
+    background: var(--green);
+    color: #101512;
+}
+
+.button-primary:hover {
+    background: #c0ed52;
+    transform: translateY(-2px);
+}
+
+.button-outline {
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+}
+
+.button-outline:hover {
+    border-color: var(--green);
+    color: var(--green);
+}
+
+
+/* =========================================================
+   HERO BOTTOM
+========================================================= */
+
+.hero-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    border-top: 1px solid rgba(255,255,255,0.12);
+
+    background: rgba(10,15,12,0.75);
+    backdrop-filter: blur(8px);
+}
+
+.hero-bottom-inner {
+    max-width: 1200px;
+    width: 90%;
+
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.hero-stat {
+    padding: 22px 20px;
+
+    border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.hero-stat:last-child {
+    border-right: none;
+}
+
+.hero-stat strong {
+    display: block;
+
+    color: white;
+
+    font-size: 0.85rem;
+}
+
+.hero-stat span {
+    color: #969d96;
+
+    font-size: 0.75rem;
+}
+
+
+/* =========================================================
+   SECTION BASICS
+========================================================= */
+
+.section {
+    padding: 120px 5%;
+}
+
+.section-inner {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.eyebrow {
+    color: var(--green);
+
+    font-size: 0.75rem;
+
+    text-transform: uppercase;
+    letter-spacing: 3px;
+
+    font-weight: 800;
+
+    margin-bottom: 15px;
+}
+
+.section-heading {
+    font-size: clamp(2.8rem, 5vw, 5rem);
+
+    line-height: 0.95;
+
+    letter-spacing: -3px;
+
+    text-transform: uppercase;
+}
+
+.section-description {
+    color: var(--muted);
+
+    max-width: 650px;
+
+    margin-top: 22px;
+
+    font-size: 1.05rem;
+}
+
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.services {
+    background: var(--cream);
+    color: #151b17;
+}
+
+.services .section-description {
+    color: #626861;
+}
+
+.service-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 2px;
+
+    margin-top: 65px;
+}
+
+.service-card {
+    position: relative;
+
+    min-height: 390px;
+
+    padding: 35px;
+
+    overflow: hidden;
+
+    background: #dfe2d9;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    transition: 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-6px);
+}
+
+.service-card-image {
+    position: absolute;
+
+    inset: 0;
+
+    background-size: cover;
+    background-position: center;
+
+    transition: 0.5s;
+}
+
+.service-card:hover .service-card-image {
+    transform: scale(1.05);
+}
+
+.service-card::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            transparent 25%,
+            rgba(0,0,0,0.85) 100%
+        );
+}
+
+.service-content {
+    position: relative;
+
+    z-index: 2;
+
+    color: white;
+}
+
+.service-number {
+    color: var(--green);
+
+    font-size: 0.75rem;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+}
+
+.service-content h3 {
+    font-size: 1.8rem;
+
+    text-transform: uppercase;
+
+    line-height: 1;
+}
+
+.service-content p {
+    margin-top: 12px;
+
+    color: #d3d7d1;
+
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   EXPERIENCE
+========================================================= */
+
+.experience {
+    background: var(--dark-2);
+}
+
+.experience-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 80px;
+
+    margin-top: 65px;
+
+    align-items: center;
+}
+
+.experience-image {
+    min-height: 600px;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.05),
+            rgba(0,0,0,0.35)
+        ),
+        url("https://static.wixstatic.com/media/f17b6c_e6467331a2ba4d2ca0ef3c01bd7b84c0~mv2.jpeg/v1/fill/w_900,h_900,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/f17b6c_e6467331a2ba4d2ca0ef3c01bd7b84c0~mv2.jpeg");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.experience-copy h3 {
+    font-size: 2rem;
+
+    line-height: 1.05;
+
+    margin-bottom: 25px;
+}
+
+.experience-copy p {
+    color: #aeb5ae;
+
+    margin-bottom: 20px;
+}
+
+.experience-list {
+    list-style: none;
+
+    margin-top: 30px;
+}
+
+.experience-list li {
+    padding: 14px 0;
+
+    border-bottom: 1px solid var(--line);
+
+    color: #e0e3de;
+}
+
+.experience-list li::before {
+    content: "✓";
+
+    color: var(--green);
+
+    font-weight: 900;
+
+    margin-right: 12px;
+}
+
+
+/* =========================================================
+   TOHATSU
+========================================================= */
+
+.tohatsu {
+    background: #0c1110;
+
+    padding: 0;
+}
+
+.tohatsu-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    min-height: 620px;
+}
+
+.tohatsu-image {
+    background:
+        url("https://static.wixstatic.com/media/f17b6c_c7ab2d10982340e7ba0cc7fe3c88c8b0~mv2.jpeg/v1/fill/w_900,h_1000,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/f17b6c_c7ab2d10982340e7ba0cc7fe3c88c8b0~mv2.jpeg");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.tohatsu-content {
+    padding: 90px 10%;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.tohatsu-content h2 {
+    font-size: clamp(3rem, 5vw, 5.5rem);
+
+    line-height: 0.9;
+
+    letter-spacing: -4px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 25px;
+}
+
+.tohatsu-content h2 span {
+    color: var(--green);
+}
+
+.tohatsu-content p {
+    color: #aeb5ae;
+
+    max-width: 520px;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   MOBILE MECHANIC
+========================================================= */
+
+.mobile-service {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(15,21,18,0.98),
+            rgba(15,21,18,0.78)
+        ),
+        url("https://static.wixstatic.com/media/f17b6c_72d9208a827a4763b8dc6d4e0db96b1e~mv2.jpeg/v1/fill/w_1200,h_900,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/f17b6c_72d9208a827a4763b8dc6d4e0db96b1e~mv2.jpeg");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.mobile-content {
+    max-width: 750px;
+}
+
+.mobile-content h2 {
+    font-size: clamp(3rem, 6vw, 6rem);
+
+    line-height: 0.9;
+
+    letter-spacing: -4px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 25px;
+}
+
+.mobile-content h2 span {
+    color: var(--green);
+}
+
+.mobile-content p {
+    color: #c3c9c2;
+
+    font-size: 1.1rem;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about {
+    background: var(--cream);
+
+    color: #161c18;
+}
+
+.about-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1.2fr;
+
+    gap: 80px;
+
+    align-items: start;
+
+    margin-top: 65px;
+}
+
+.about-image {
+    min-height: 500px;
+
+    background:
+        url("https://static.wixstatic.com/media/f17b6c_21543ec51d2646f799bc3931e57b469d~mv2.jpeg/v1/fill/w_900,h_700,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/f17b6c_21543ec51d2646f799bc3931e57b469d~mv2.jpeg");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.about-copy h3 {
+    font-size: 2.4rem;
+
+    line-height: 1;
+
+    margin-bottom: 25px;
+}
+
+.about-copy p {
+    color: #596159;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact {
+    background: var(--green);
+
+    color: #101512;
+}
+
+.contact-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 80px;
+
+    align-items: center;
+}
+
+.contact h2 {
+    font-size: clamp(3rem, 6vw, 6rem);
+
+    line-height: 0.9;
+
+    letter-spacing: -4px;
+
+    text-transform: uppercase;
+}
+
+.contact-intro {
+    margin-top: 25px;
+
+    max-width: 550px;
+
+    font-size: 1.05rem;
+}
+
+.contact-details {
+    margin-top: 35px;
+}
+
+.contact-item {
+    padding: 18px 0;
+
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.contact-item small {
+    display: block;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    font-weight: 900;
+
+    font-size: 0.65rem;
+
+    margin-bottom: 5px;
+}
+
+.contact-item a,
+.contact-item strong {
+    font-size: 1.15rem;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    background: #090d0b;
+
+    padding: 40px 5%;
+}
+
+.footer-inner {
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+.footer-logo {
+    font-weight: 900;
+
+    font-size: 1rem;
+}
+
+.footer-logo span {
+    color: var(--green);
+}
+
+.footer-copy {
+    color: #737a73;
+
+    font-size: 0.75rem;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .navbar {
+        padding: 20px 5%;
+    }
+
+    .nav-links li:not(:last-child) {
+        display: none;
+    }
+
+    .hero {
+        min-height: 780px;
+    }
+
+    .hero h1 {
+        font-size: 3.5rem;
+        letter-spacing: -3px;
+    }
+
+    .hero-bottom-inner {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-stat:nth-child(2) {
+        border-right: none;
+    }
+
+    .hero-stat {
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .experience-grid,
+    .tohatsu-grid,
+    .about-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .experience-image {
+        min-height: 450px;
+    }
+
+    .tohatsu-image {
+        min-height: 500px;
+    }
+
+    .about-image {
+        min-height: 400px;
+    }
+
+    .contact-grid {
+        gap: 40px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .nav-call {
+        padding: 9px 12px;
+
+        font-size: 0.7rem;
+    }
+
+    .hero {
+        min-height: 850px;
+    }
+
+    .hero h1 {
+        font-size: 2.9rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .hero-bottom-inner {
+        width: 100%;
+    }
+
+    .hero-stat {
+        padding: 15px;
+    }
+
+    .section {
+        padding: 85px 6%;
+    }
+
+    .service-card {
+        min-height: 340px;
+    }
+
+    .experience-image {
+        min-height: 350px;
+    }
+
+    .tohatsu-image {
+        min-height: 400px;
+    }
+
+    .tohatsu-content {
+        padding: 70px 7%;
+    }
+
+    .about-image {
+        min-height: 330px;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+    }
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-    <!-- HEADER -->
 
-    <header>
-        <nav class="nav">
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
 
-            <a href="#" class="logo">
-                CAIRNS <span>&</span> CAPE
+<nav class="navbar">
+
+    <a href="#" class="logo">
+        CAIRNS <span>&</span> CAPE MECHANICAL
+    </a>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="#services">Services</a>
+        </li>
+
+        <li>
+            <a href="#about">About</a>
+        </li>
+
+        <li>
+            <a href="#contact">Contact</a>
+        </li>
+
+        <li>
+            <a class="nav-call" href="tel:0428454200">
+                CALL 0428 454 200
             </a>
+        </li>
 
-            <ul class="nav-links">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li>
-                    <a href="#contact" class="nav-button">Get a Quote</a>
-                </li>
-            </ul>
+    </ul>
 
-        </nav>
-    </header>
+</nav>
 
 
-    <!-- HERO -->
+<!-- =====================================================
+     HERO
+===================================================== -->
 
-    <section class="hero">
+<section class="hero">
 
-        <div class="hero-content">
+    <div class="hero-content">
 
-            <div class="eyebrow">
-                Mechanical Services · Cairns & Far North Queensland
-            </div>
-
-            <h1>
-                Built tough.<br>
-                <span>Ready for work.</span>
-            </h1>
-
-            <p class="hero-text">
-                Reliable mechanical services for drivers, businesses and
-                equipment across Cairns and the Far North.
-            </p>
-
-            <div class="hero-buttons">
-                <a href="#contact" class="button button-primary">
-                    Get a Quote →
-                </a>
-
-                <a href="#services" class="button button-secondary">
-                    Explore Services
-                </a>
-            </div>
-
+        <div class="hero-eyebrow">
+            Marine · PWC · Motorcycles · Machinery
         </div>
 
-    </section>
+        <h1>
+            Mechanical expertise
+            <span>that goes where you do.</span>
+        </h1>
 
+        <p class="hero-description">
+            Over 25 years of hands-on mechanical experience across
+            Far North Queensland. From the water to Cape York,
+            we keep your equipment ready for whatever comes next.
+        </p>
 
-    <!-- TRUST -->
+        <div class="hero-buttons">
 
-    <div class="trust">
+            <a
+                href="tel:0428454200"
+                class="button button-primary"
+            >
+                Call 0428 454 200 →
+            </a>
 
-        <div class="trust-inner">
-
-            <div class="trust-item">
-                <strong>Local</strong>
-                Cairns & Far North
-            </div>
-
-            <div class="trust-item">
-                <strong>Reliable</strong>
-                Quality workmanship
-            </div>
-
-            <div class="trust-item">
-                <strong>Professional</strong>
-                Experienced service
-            </div>
-
-            <div class="trust-item">
-                <strong>Ready to help</strong>
-                Get in touch today
-            </div>
+            <a
+                href="#services"
+                class="button button-outline"
+            >
+                Explore Services
+            </a>
 
         </div>
 
     </div>
 
 
-    <!-- SERVICES -->
+    <div class="hero-bottom">
 
-    <section class="services" id="services">
+        <div class="hero-bottom-inner">
 
-        <div class="section-inner">
-
-            <div class="section-label">
-                What we do
+            <div class="hero-stat">
+                <strong>25+ YEARS</strong>
+                <span>Hands-on experience</span>
             </div>
 
-            <h2 class="section-title">
-                Mechanical work<br>
-                without the hassle.
-            </h2>
+            <div class="hero-stat">
+                <strong>MOBILE SERVICE</strong>
+                <span>We come to you</span>
+            </div>
 
-            <p class="section-intro">
-                From everyday servicing to more specialised mechanical work,
-                Cairns & Cape Mechanical is here to keep your vehicle or
-                equipment working properly.
-            </p>
+            <div class="hero-stat">
+                <strong>TOHATSU DEALER</strong>
+                <span>Authorised Marine dealer</span>
+            </div>
 
+            <div class="hero-stat">
+                <strong>FNQ & CAPE YORK</strong>
+                <span>From Ingham to Cape York</span>
+            </div>
 
-            <div class="service-grid">
+        </div>
 
-                <div class="service-card">
-                    <div class="service-number">01</div>
+    </div>
 
-                    <h3>Mechanical Servicing</h3>
-
-                    <p>
-                        Regular servicing and maintenance to help keep your
-                        vehicle performing reliably.
-                    </p>
-                </div>
+</section>
 
 
-                <div class="service-card">
-                    <div class="service-number">02</div>
+<!-- =====================================================
+     SERVICES
+===================================================== -->
 
-                    <h3>Repairs & Diagnostics</h3>
+<section class="section services" id="services">
 
-                    <p>
-                        Professional fault finding, diagnostics and repairs
-                        when something isn't working as it should.
-                    </p>
-                </div>
+    <div class="section-inner">
 
+        <div class="eyebrow">
+            What we do
+        </div>
 
-                <div class="service-card">
-                    <div class="service-number">03</div>
+        <h2 class="section-heading">
+            Built for the<br>
+            real world.
+        </h2>
 
-                    <h3>Vehicle Maintenance</h3>
-
-                    <p>
-                        Practical maintenance solutions designed around your
-                        vehicle and the way you use it.
-                    </p>
-                </div>
-
-
-                <div class="service-card">
-                    <div class="service-number">04</div>
-
-                    <h3>Commercial Support</h3>
-
-                    <p>
-                        Reliable mechanical support to help keep business
-                        vehicles and equipment moving.
-                    </p>
-                </div>
+        <p class="section-description">
+            From scheduled servicing to major repairs and diagnostics,
+            Cairns & Cape Mechanical provides practical mechanical
+            expertise for marine, PWC, motorcycles, SXS and machinery.
+        </p>
 
 
-                <div class="service-card">
-                    <div class="service-number">05</div>
-
-                    <h3>Inspections</h3>
-
-                    <p>
-                        Thorough inspections to identify issues before they
-                        become bigger problems.
-                    </p>
-                </div>
+        <div class="service-grid">
 
 
-                <div class="service-card">
-                    <div class="service-number">06</div>
+            <article class="service-card">
 
-                    <h3>Need Something Else?</h3>
+                <div
+                    class="service-card-image"
+                    style="
+                    background-image:
+                    url('https://static.wixstatic.com/media/f17b6c_e6467331a2ba4d2ca0ef3c01bd7b84c0~mv2.jpeg/v1/fill/w_700,h_700,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/f17b6c_e6467331a2ba4d2ca0ef3c01bd7b84c0~mv2.jpeg');
+                    "
+                ></div>
+
+                <div class="service-content">
+
+                    <div class="service-number">
+                        01 / MARINE
+                    </div>
+
+                    <h3>
+                        Marine & PWC
+                    </h3>
 
                     <p>
-                        Talk to the team about your vehicle or mechanical
-                        requirements.
+                        Servicing, diagnostics, repairs, fit-ups,
+                        rebuilds, repowers and more.
                     </p>
+
                 </div>
+
+            </article>
+
+
+            <article class="service-card">
+
+                <div
+                    class="service-card-image"
+                    style="
+                    background-image:
+                    url('https://static.wixstatic.com/media/f17b6c_72d9208a827a4763b8dc6d4e0db96b1e~mv2.jpeg/v1/fill/w_700,h_700,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/f17b6c_72d9208a827a4763b8dc6d4e0db96b1e~mv2.jpeg');
+                    "
+                ></div>
+
+                <div class="service-content">
+
+                    <div class="service-number">
+                        02 / MOTORSPORT
+                    </div>
+
+                    <h3>
+                        Motorcycles & SXS
+                    </h3>
+
+                    <p>
+                        Servicing, repairs, suspension work,
+                        rebuilds and performance work.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="service-card">
+
+                <div
+                    class="service-card-image"
+                    style="
+                    background-image:
+                    url('https://static.wixstatic.com/media/f17b6c_cf34bfb52ba246c38b968984719ff499~mv2.jpg/v1/fill/w_700,h_700,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/f17b6c_cf34bfb52ba246c38b968984719ff499~mv2.jpg');
+                    "
+                ></div>
+
+                <div class="service-content">
+
+                    <div class="service-number">
+                        03 / MACHINERY
+                    </div>
+
+                    <h3>
+                        Machinery
+                    </h3>
+
+                    <p>
+                        Practical mechanical support for equipment
+                        used on the road, water and job site.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     EXPERIENCE
+===================================================== -->
+
+<section class="section experience">
+
+    <div class="section-inner">
+
+        <div class="eyebrow">
+            Experience you can trust
+        </div>
+
+        <h2 class="section-heading">
+            Knowledge earned<br>
+            the hard way.
+        </h2>
+
+
+        <div class="experience-grid">
+
+            <div class="experience-image"></div>
+
+
+            <div class="experience-copy">
+
+                <h3>
+                    More than 25 years
+                    of hands-on experience.
+                </h3>
+
+                <p>
+                    At Cairns & Cape Mechanical, experience isn't just
+                    measured in years. It comes from a lifetime spent
+                    on the water, riding and racing motorcycles, and
+                    operating and working on machinery throughout
+                    Cape York and Far North Queensland.
+                </p>
+
+                <p>
+                    With Yamaha OEM factory training and extensive
+                    knowledge across Yamaha, Can-Am, Kawasaki and
+                    Husqvarna, we specialise in Marine, PWC and
+                    Motorcycle servicing, diagnostics and repairs.
+                </p>
+
+                <ul class="experience-list">
+
+                    <li>
+                        Yamaha OEM factory trained technician
+                    </li>
+
+                    <li>
+                        Marine & PWC specialists
+                    </li>
+
+                    <li>
+                        Motorcycle & SXS servicing
+                    </li>
+
+                    <li>
+                        Honest advice & accurate diagnostics
+                    </li>
+
+                    <li>
+                        Mobile service across FNQ
+                    </li>
+
+                </ul>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- ABOUT -->
+<!-- =====================================================
+     TOHATSU
+===================================================== -->
 
-    <section class="about" id="about">
+<section class="tohatsu">
 
-        <div class="section-inner">
+    <div class="tohatsu-grid">
 
-            <div class="section-label">
-                Why choose us
-            </div>
-
-
-            <div class="about-grid">
-
-                <div class="about-visual">
-                </div>
+        <div class="tohatsu-image"></div>
 
 
-                <div class="about-content">
+        <div class="tohatsu-content">
 
-                    <h2>
-                        Local knowledge.
-                        Honest work.
-                    </h2>
-
-                    <p>
-                        Your website should make it immediately clear who you
-                        are, what you do and why customers should contact you.
-                    </p>
-
-                    <p>
-                        This section will be replaced with the real Cairns &
-                        Cape Mechanical story once we pull the information
-                        from the existing business.
-                    </p>
-
-
-                    <ul class="about-list">
-
-                        <li>
-                            Local Far North Queensland business
-                        </li>
-
-                        <li>
-                            Professional mechanical service
-                        </li>
-
-                        <li>
-                            Quality workmanship
-                        </li>
-
-                        <li>
-                            Customer-focused service
-                        </li>
-
-                    </ul>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- CTA -->
-
-    <section class="cta" id="contact">
-
-        <div class="section-inner">
-
-            <div class="section-label">
-                Get in touch
+            <div class="eyebrow">
+                Authorised Marine Dealer
             </div>
 
             <h2>
-                Need a mechanic?
-                Let's get it sorted.
+                Meet<br>
+                <span>Tohatsu.</span>
             </h2>
 
             <p>
-                Get in touch with Cairns & Cape Mechanical to discuss your
-                vehicle or mechanical requirements.
+                Cairns & Cape Mechanical is an authorised Tohatsu
+                Marine dealer. We supply, install, service and repair
+                Tohatsu outboards while also servicing and repairing
+                all major outboard brands.
             </p>
 
-            <a href="tel:0000000000" class="button button-primary">
-                Call Now →
+            <p>
+                From routine maintenance and fault finding to
+                breakdown repairs, new outboards and complete
+                repowers, our team is ready to help.
+            </p>
+
+            <a
+                href="tel:0428454200"
+                class="button button-primary"
+            >
+                Enquire About Tohatsu →
             </a>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- FOOTER -->
+<!-- =====================================================
+     MOBILE SERVICE
+===================================================== -->
 
-    <footer>
+<section class="section mobile-service">
 
-        <div class="footer-inner">
+    <div class="section-inner">
 
-            <div>
+        <div class="mobile-content">
 
-                <div class="footer-logo">
-                    CAIRNS <span>&</span> CAPE MECHANICAL
-                </div>
-
-                <div class="footer-text">
-                    Mechanical services · Cairns & Far North Queensland
-                </div>
-
+            <div class="eyebrow">
+                Mobile Mechanical Service
             </div>
 
+            <h2>
+                We go<br>
+                <span>where you are.</span>
+            </h2>
 
-            <div class="footer-text">
-                © 2026 Cairns & Cape Mechanical
+            <p>
+                From Ingham to the tip of Cape York and local islands,
+                Cairns & Cape Mechanical brings professional mechanical
+                servicing and repairs directly to you.
+            </p>
+
+            <p>
+                Whether you're on the water, on the road or on-site,
+                we're ready to help keep your equipment running.
+            </p>
+
+            <a
+                href="tel:0428454200"
+                class="button button-primary"
+            >
+                Call the Mobile Mechanic →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section class="section about" id="about">
+
+    <div class="section-inner">
+
+        <div class="eyebrow">
+            About Cairns & Cape Mechanical
+        </div>
+
+        <h2 class="section-heading">
+            Local knowledge.<br>
+            Serious experience.
+        </h2>
+
+
+        <div class="about-grid">
+
+            <div class="about-image"></div>
+
+
+            <div class="about-copy">
+
+                <h3>
+                    Built around reliability.
+                </h3>
+
+                <p>
+                    At Cairns and Cape Mechanical, experience meets
+                    reliability. With over 25 years in the industry,
+                    we specialise in servicing and repairing outboards,
+                    PWC, motorcycles and a wide range of machinery.
+                </p>
+
+                <p>
+                    Our OEM training spans leading brands including
+                    Yamaha marine, PWC and motorcycles, Husqvarna,
+                    Kawasaki motorcycles, Can-Am quads and side-by-sides,
+                    Sea-Doo personal watercraft, Caterpillar and
+                    Hitachi machinery.
+                </p>
+
+                <p>
+                    We are a fully mobile mechanic service covering
+                    a vast region from Ingham all the way to the tip
+                    of Cape York. We also have a fully equipped
+                    workshop for the bigger jobs.
+                </p>
+
+                <p>
+                    Reliable, experienced and ready to travel —
+                    Cairns & Cape Mechanical is your trusted partner
+                    in the field.
+                </p>
+
             </div>
 
         </div>
 
-    </footer>
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section class="section contact" id="contact">
+
+    <div class="section-inner">
+
+        <div class="contact-grid">
+
+            <div>
+
+                <div class="eyebrow">
+                    Get in touch
+                </div>
+
+                <h2>
+                    Let's get<br>
+                    you moving.
+                </h2>
+
+                <p class="contact-intro">
+                    Need servicing, repairs, diagnostics or a new
+                    outboard? Get in touch with Cairns & Cape Mechanical.
+                </p>
+
+            </div>
+
+
+            <div class="contact-details">
+
+                <div class="contact-item">
+
+                    <small>
+                        Call
+                    </small>
+
+                    <a href="tel:0428454200">
+                        0428 454 200
+                    </a>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <small>
+                        Alternate
+                    </small>
+
+                    <a href="tel:0417472175">
+                        0417 472 175
+                    </a>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <small>
+                        Email
+                    </small>
+
+                    <a href="mailto:cairnsandcapemechanical@gmail.com">
+                        cairnsandcapemechanical@gmail.com
+                    </a>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <small>
+                        Workshop
+                    </small>
+
+                    <strong>
+                        17 Tom Carr Cl<br>
+                        Babinda QLD 4861
+                    </strong>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <small>
+                        Service Area
+                    </small>
+
+                    <strong>
+                        Ingham → Cape York<br>
+                        & local islands
+                    </strong>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <small>
+                        Opening Hours
+                    </small>
+
+                    <strong>
+                        Mon – Fri · 8am – 4pm
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-inner">
+
+        <div class="footer-logo">
+            CAIRNS <span>&</span> CAPE MECHANICAL
+        </div>
+
+        <div class="footer-copy">
+            © 2026 Cairns & Cape Mechanical · FNQ & Cape York
+        </div>
+
+    </div>
+
+</footer>
+
 
 </body>
 </html>
