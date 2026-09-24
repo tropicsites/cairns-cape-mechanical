@@ -133,7 +133,7 @@ p { margin: 0 0 1.15rem; }
 .btn.light:hover { background: var(--green); border-color: var(--green); color: var(--white); }
 
 .hero-home {
-  min-height: 680px;
+  min-height: 0;
   display: grid;
   grid-template-columns: .9fr 1.1fr;
   background: var(--paper);
@@ -141,7 +141,7 @@ p { margin: 0 0 1.15rem; }
 .hero-copy { padding: clamp(60px, 9vw, 120px) max(40px, calc((100vw - var(--max)) / 2)) clamp(70px, 10vw, 120px)  max(40px, calc((100vw - var(--max)) / 2)); padding-right: 50px; }
 .hero-copy h1 { max-width: 690px; }
 .hero-copy .hero-sub { margin-top: 24px; max-width: 560px; }
-.hero-image { min-height: 680px; position: relative; overflow: hidden; }
+.hero-image { height: clamp(480px, 42vw, 620px); min-height: 0; position: relative; overflow: hidden; }
 .hero-image img { width: 100%; height: 100%; object-fit: cover; }
 .hero-image::after {
   content: '';
@@ -179,14 +179,14 @@ p { margin: 0 0 1.15rem; }
 .intro-grid h2 { max-width: 570px; }
 .intro-grid .copy { padding-top: 10px; }
 
-.photo-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
-.photo { overflow: hidden; background: var(--paper-deep); }
+.photo-grid { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: clamp(230px, 28vw, 360px); gap: 16px; }
+.photo { min-height: 0; overflow: hidden; background: var(--paper-deep); }
 .photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
 .photo:hover img { transform: scale(1.025); }
-.photo-wide { grid-column: span 7; min-height: 390px; }
-.photo-tall { grid-column: span 5; min-height: 390px; }
-.photo-half { grid-column: span 6; min-height: 360px; }
-.photo-third { grid-column: span 4; min-height: 300px; }
+.photo-wide { grid-column: span 7; }
+.photo-tall { grid-column: span 5; }
+.photo-half { grid-column: span 6; }
+.photo-third { grid-column: span 4; }
 .photo img.contain { object-fit: contain; }
 
 .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -218,7 +218,7 @@ p { margin: 0 0 1.15rem; }
 
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
 .split-copy { padding: clamp(50px, 8vw, 100px) max(40px, calc((100vw - var(--max)) / 2)); padding-right: clamp(40px, 7vw, 100px); }
-.split-media { min-height: 620px; }
+.split-media { height: clamp(420px, 42vw, 560px); min-height: 0; overflow: hidden; }
 .split-media img { width: 100%; height: 100%; object-fit: cover; }
 
 .service-detail { display: grid; grid-template-columns: 220px 1fr; gap: 50px; padding: 70px 0; border-top: 1px solid var(--line); }
@@ -282,12 +282,12 @@ p { margin: 0 0 1.15rem; }
   .mobile-nav-links a { padding: 10px 8px; text-decoration: none; font-size: .82rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
   .hero-home { grid-template-columns: 1fr; }
   .hero-copy { padding: 72px 20px 64px; width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
-  .hero-image { min-height: 500px; }
+  .hero-image { min-height: 0; height: clamp(360px, 62vw, 500px); }
   .intro-grid, .contact-grid { grid-template-columns: 1fr; }
   .service-grid { grid-template-columns: 1fr 1fr; }
   .split { grid-template-columns: 1fr; }
   .split-copy { padding: 70px 20px; width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
-  .split-media { min-height: 500px; }
+  .split-media { height: clamp(360px, 56vw, 500px); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
 }
@@ -304,10 +304,10 @@ p { margin: 0 0 1.15rem; }
   .service-detail { grid-template-columns: 1fr; gap: 15px; padding: 52px 0; }
   .service-detail-index { font-size: 2.2rem; }
   .service-list { grid-template-columns: 1fr; }
-  .photo-grid { gap: 12px; }
-  .photo-wide, .photo-tall, .photo-half, .photo-third { grid-column: span 12; min-height: 300px; }
+  .photo-grid { gap: 12px; grid-auto-rows: clamp(240px, 72vw, 360px); }
+  .photo-wide, .photo-tall, .photo-half, .photo-third { grid-column: span 12; }
   .image-band { min-height: 510px; }
-  .split-media { min-height: 390px; }
+  .split-media { height: clamp(320px, 72vw, 430px); }
   .training-grid { grid-template-columns: 1fr 1fr; }
   .contact-card { padding: 30px; }
   .map-frame, .map-frame iframe { min-height: 390px; }
@@ -320,7 +320,7 @@ p { margin: 0 0 1.15rem; }
 @media (max-width: 480px) {
   .header-inner { width: calc(100% - 28px); }
   .hero-copy { width: calc(100% - 28px); padding-left: 14px; padding-right: 14px; }
-  .hero-image { min-height: 390px; }
+  .hero-image { height: clamp(320px, 78vw, 430px); }
   .btn { width: 100%; }
   .btn-row { width: 100%; }
   .training-grid { grid-template-columns: 1fr; }
